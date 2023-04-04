@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		2+XOvwfG28y4pJpMy9/pQQvLMx4=
+		8wTpq2J3nJQqlpiIcKZfiLSKHkc=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		hp1A6iCrTtggVAwUzIevlWjrkZw=
+		5gjKsKFJIcS401HjSQaNo693+MM=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
@@ -130,7 +130,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		OEDlDWkrN53hpj60CJqHq/fkx98=
+		yqDTDuDCfYxlcpgF6DXgoWQ0KgY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -238,7 +238,7 @@
 		</data>
 		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation</key>
 		<data>
-		gMXPKpZyl8SXU9l6rN81/yZqPQI=
+		erpWjHC0zhKWa8rq0igD2E0bBd0=
 		</data>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
 		<data>
@@ -349,7 +349,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y/8RFRJqemEVcZm1+3iDufpHKnZxIcmqxDC73GIv5uU=
+			8XKZfjlfcHthcJ9B3X9rPtznH1E3RiHgs7ZWbPh9tPY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -363,7 +363,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1VYt+HNaFEtXoo6QaTx1fH5hstGJj5y1vGwJvAtQMEQ=
+			JwRbM/NywfZYc58UFTJ0ewzWs4Dxq5/fLwiXWKKG19g=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
@@ -496,7 +496,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qsZAGWvGD3vtpZWzotA58GJswtiaiMny5jDE2csOshQ=
+			75NxPtha32soqMLgjclGRl841h3ofKv1xigWQjttK5g=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -685,7 +685,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			E+4Yja0Bj8q4bgWT+OngE/PTI4JMdC8XEMrXvKx0Xwk=
+			1lORGvzExuMCjEUUTnrKZCBYXFrL0HaiQhgGJx6hpKc=
 			</data>
 		</dict>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
