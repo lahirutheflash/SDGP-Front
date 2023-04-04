@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "6cb09ca255f40d28b5c5a8544d6ab1654c7dae82fef2c265f7b2207095eb98bb"
+build_start_time: [1679209818, 550849914]
+build_end_time: [1679209818, 621683120]
+inputs:
+  "/Users/lakinduindipa/Documents/skeen/skeen/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1679209800, 299451589]
+  "/Users/lakinduindipa/Documents/skeen/skeen/macos/Runner/AppDelegate.swift": !private [1678307504, 0]
+  "/Users/lakinduindipa/Documents/skeen/skeen/macos/Runner/MainFlutterWindow.swift": !private [1678307504, 0]
