@@ -78,23 +78,70 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 20,
-                        ),
-                        child: Recents(
-                          name: demoMediumCardData[index]['name'],
-                          imagePath: demoMediumCardData[index]['image'],
-                        ),
-                      );
-                    },
-                    childCount: demoMediumCardData.length,
+                const SliverToBoxAdapter(
+                  child: ImageCarousel(),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.all(defaultPadding),
+                  sliver: SliverToBoxAdapter(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "BookMarked",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        )
+                      ],
+                    ),
                   ),
                 ),
+                demoMediumCardData.isEmpty
+                    ? SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: defaultPadding,
+                            horizontal: defaultPadding * 3,
+                          ),
+                          child: Text(
+                            "No saved items yet",
+                            style: Theme.of(context).textTheme.headline5,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      )
+                    : SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DiseasePage(
+                                      name: demoMediumCardData[index]['name'],
+                                      imagePath: demoMediumCardData[index]
+                                          ['image'],
+                                      description: demoMediumCardData[index]
+                                          ['des'],
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                  horizontal: 20,
+                                ),
+                                child: Recents(
+                                  name: demoMediumCardData[index]['name'],
+                                  imagePath: demoMediumCardData[index]['image'],
+                                ),
+                              ),
+                            );
+                          },
+                          childCount: demoMediumCardData.length,
+                        ),
+                      ),
               ],
             ),
           ),
@@ -102,6 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  DiseasePage({required name, required imagePath, required description}) {}
 }
 
 class Recents extends StatelessWidget {
@@ -175,7 +224,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (_) {
       final nextPage = _currentPage + 1;
       if (nextPage >= demoBigImages.length) {
         _pageController.jumpToPage(0);

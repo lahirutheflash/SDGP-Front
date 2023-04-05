@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:skeen/second.dart';
+import 'package:skeen/camerapage.dart';
+import 'package:skeen/community.dart';
+import 'package:skeen/homescreen.dart';
+
+import 'constants.dart';
+import 'diseasepage.dart';
+import 'suggestionpage.dart';
 
 void main() {
   runApp(const MyApp());

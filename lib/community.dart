@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import "package:universal_html/html.dart" as html;
+import 'package:url_launcher/url_launcher.dart';
 
 import 'constants.dart';
 import 'demoData.dart';
@@ -18,6 +20,14 @@ class CommunityPage extends StatefulWidget {
 
 class _CommunityPageState extends State<CommunityPage> {
   String _searchQuery = '';
+
+  void launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,7 @@ class _CommunityPageState extends State<CommunityPage> {
               },
               decoration: InputDecoration(
                 hintText: "Search Support Groups",
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
@@ -80,18 +90,7 @@ class _CommunityPageState extends State<CommunityPage> {
                           (context, index) {
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SupportGroup(
-                                      name: filteredSupportGroups[index]
-                                          ['name'],
-                                      imagePath: filteredSupportGroups[index]
-                                          ['image'],
-                                      url: filteredSupportGroups[index]['url'],
-                                    ),
-                                  ),
-                                );
+                                launchURL(filteredSupportGroups[index]['url']);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

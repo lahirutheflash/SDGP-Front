@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(
@@ -18,11 +20,10 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPageState extends State<CameraPage> {
-  File? _imageFile; // Add ? to make it nullable
+  File? _imageFile;
 
   @override
   Widget build(BuildContext context) {
-    var gallery;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -79,7 +80,8 @@ class _CameraPageState extends State<CameraPage> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () => getImage(source: ImageSource.camera),
+                      onPressed: () =>
+                          _checkCameraPermissions(ImageSource.camera),
                       child: const Text('Capture Image',
                           style: TextStyle(fontSize: 18))),
                 ),
@@ -88,7 +90,8 @@ class _CameraPageState extends State<CameraPage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () => getImage(source: ImageSource.gallery),
+                      onPressed: () =>
+                          _checkCameraPermissions(ImageSource.gallery),
                       child: const Text('Select Image',
                           style: TextStyle(fontSize: 18))),
                 )
@@ -100,32 +103,39 @@ class _CameraPageState extends State<CameraPage> {
     );
   }
 
-  void getImage({required ImageSource source}) async {
-    final file = await ImagePicker().pickImage(
-        source: source,
-        maxWidth: 640,
-        maxHeight: 480,
-        imageQuality: 70 //0 - 100
-        );
+  Future<void> getImage({required ImageSource source}) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      source: source,
+      maxWidth: 640,
+      maxHeight: 480,
+      imageQuality: 70,
+    );
 
-    if (file?.path != null) {
+    if (pickedFile != null) {
       setState(() {
-        _imageFile = File(file!.path);
+        _imageFile = File(pickedFile.path);
       });
     }
   }
-}
 
-class ImagePicker {
-  pickImage(
-      {required ImageSource source,
-      required int maxWidth,
-      required int maxHeight,
-      required int imageQuality}) {}
-}
-
-class ImageSource {
-  static var gallery;
-
-  static var camera;
+  Future<void> _checkCameraPermissions(ImageSource source) async {
+    final cameras = await availableCameras();
+    final camera = cameras.first;
+    final status = await Permission.camera.status;
+    if (status.isGranted) {
+      await getImage(source: source);
+    } else {
+      final result = await Permission.camera.request();
+      if (result.isGranted) {
+        await getImage(source: source);
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) => const AlertDialog(
+                  title: Text('Camera Permission'),
+                ));
+      }
+    }
+  }
 }
